@@ -1,0 +1,5 @@
+FROM raychee/python2-teradata
+RUN yum makecache fast && \
+    yum install -y python-devel && \
+    yum install -y openldap-devel && \
+    pip install python-ldap
