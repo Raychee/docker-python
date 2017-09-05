@@ -30,7 +30,7 @@ Here is an example code snippet for connecting to Teradata with python (run in d
 ```python
 import teradata
 uda = teradata.UdaExec(appName='AnythingButRequired', version='1.0')
-session = uda.connect(method='odbc', system='simba.***.com', username='<your_name>', password='<your_password>')
+session = uda.connect(method='odbc', system='<www.host_server.com>', username='<your_name>', password='<your_password>')
 query = session.execute('SELECT * FROM table')
 result = query.fetchall()
 ```
@@ -60,7 +60,7 @@ This image is identical to **python2-teradata** except that the python version i
 <a name="qutils"></a> By the way, there is an even simpler and more friendly solution to connect to teradata (for python *3* only): firstly ```pip install qutils``` in bash, and then in python
 ```python
 from qutils.iotools import Teradata
-tera = Teradata('simba.vip.paypal.com', '<your_user_name>', '<your_password>')
+tera = Teradata('<www.host_server.com>', '<your_user_name>', '<your_password>')
 result = tera.query('SELECT * FROM table')
 ```
 This ```result``` will be a Pandas DataFrame.
