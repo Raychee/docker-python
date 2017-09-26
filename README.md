@@ -29,7 +29,7 @@ Specifically, the driver includes Teradata Linux Driver, and *teradata* the pyth
 Here is an example code snippet for connecting to Teradata with python (run in docker):
 ```python
 import teradata
-uda = teradata.UdaExec(appName='AnythingButRequired', version='1.0')
+uda = teradata.UdaExec(appName='whatever', version='1.0')
 session = uda.connect(method='odbc', system='<www.host_server.com>', username='<your_name>', password='<your_password>')
 query = session.execute('SELECT * FROM table')
 result = query.fetchall()

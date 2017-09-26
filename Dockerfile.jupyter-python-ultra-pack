@@ -27,4 +27,4 @@ RUN cd /opt && \
     rm -rf /opt/xgboost
 
 CMD source activate py3 && \
-    jupyter notebook --no-browser --ip='*' --port=8888 --NotebookApp.token=''
+    jupyter notebook --ip='*' --port=8888 --NotebookApp.token='' --allow-root --no-browser
