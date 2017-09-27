@@ -6,16 +6,18 @@ RUN yum install -y gcc gcc-c++ git make
 
 RUN conda create -y -n py3 python=3 ipykernel && \
     source activate py3 && \
-    conda install -y teradata=15.10.0.20 && \
-    conda install -y anaconda && \
     ipython kernel install --user && \
+    conda install -y anaconda && \
+    # unixodbc is removed from anaconda. if not, the teradata package in anaconda wouldn't work
+    conda uninstall -y unixodbc && \
     conda clean -y --all && \
 
     conda create -y -n py2 python=2 ipykernel && \
     source activate py2 && \
-    conda install -y teradata=15.10.0.20 && \
-    conda install -y anaconda && \
     ipython kernel install --user && \
+    conda install -y anaconda && \
+    # unixodbc is removed from anaconda. if not, the teradata package in anaconda wouldn't work
+    conda uninstall -y unixodbc && \
     conda clean -y --all
 
 # Install xgboost
