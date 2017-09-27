@@ -10,6 +10,7 @@ RUN conda create -y -n py3 python=3 anaconda && \
     ipython kernel install --user && \
     # unixodbc is removed from anaconda. if not, the teradata package in anaconda wouldn't work
     conda uninstall -y unixodbc && \
+    conda install -y teradata=15.10.0.20 && \
 
     conda create -y -n py2 python=2 anaconda && \
     source activate py2 && \
@@ -17,6 +18,7 @@ RUN conda create -y -n py3 python=3 anaconda && \
     ipython kernel install --user && \
     # unixodbc is removed from anaconda. if not, the teradata package in anaconda wouldn't work
     conda uninstall -y unixodbc && \
+    conda install -y teradata=15.10.0.20 && \
     conda clean -y --all
 
 # Install xgboost
