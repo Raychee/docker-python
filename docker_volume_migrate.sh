@@ -1,14 +1,30 @@
 #!/usr/bin/env bash
 
 
+BASE_NAME=$(basename $0)
+
 ALL_ACTIONS="backup restore"
+
+
+function change_delimiter() {
+    echo $1 | sed "s/$2/$3/g"
+}
+
+function exit_with_usage() {
+    echo "./${BASE_NAME} <$(change_delimiter "${ALL_ACTIONS}" " " "|")> <docker volume name> [volume data archive (tar) name]"
+    exit $1
+}
+
+function contains() {
+    [[ $2 =~ (^| )$1($| ) ]]
+}
 
 
 ACTION=$1; shift;
 
-if [[ ${ACTION} =~ (^|[[:space:]])${ALL_ACTIONS}($|[[:space:]]) ]]; then
+if ! contains "${ACTION}" "${ALL_ACTIONS}"; then
     echo "\"${ACTION}\" is not a valid action. Available are: ${ALL_ACTIONS}."
-    exit 1
+    exit_with_usage 1
 fi
 
 
@@ -17,7 +33,7 @@ DOCKER_VOLUME=$1; shift;
 #MATCHED_DOCKER_VOLUMES=$(docker volume ls --filter name=${DOCKER_VOLUME} --format "{{.Name}}" | wc -l)
 if [[ -z ${DOCKER_VOLUME} ]]; then
     echo "Please provide a docker volume."
-    exit 1
+    exit_with_usage 1
 fi
 
 
