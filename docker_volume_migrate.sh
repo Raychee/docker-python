@@ -11,7 +11,7 @@ function change_delimiter() {
 }
 
 function exit_with_usage() {
-    echo "./${BASE_NAME} <$(change_delimiter "${ALL_ACTIONS}" " " "|")> <docker volume name> [volume data archive (tar) name]"
+    echo "./${BASE_NAME} <$(change_delimiter "${ALL_ACTIONS}" " " "|")> <docker volume name> [volume data archive (.tar.gz) name]"
     exit $1
 }
 
@@ -40,15 +40,15 @@ fi
 TAR_PATH=$1; shift;
 
 if [[ -z ${TAR_PATH} ]]; then
-    TAR_PATH="${DOCKER_VOLUME}.tar"
+    TAR_PATH="${DOCKER_VOLUME}.tar.gz"
 fi
 
 
 if [[ ${ACTION} = "backup" ]]; then
-    docker run --rm -v ${DOCKER_VOLUME}:/__docker_vol__ -v $(pwd):/__host_dir__ busybox tar cvf /__host_dir__/${TAR_PATH} /__docker_vol__
+    docker run --rm -v ${DOCKER_VOLUME}:/__docker_vol__ -v $(pwd):/__host_dir__ busybox tar zcf /__host_dir__/${TAR_PATH} /__docker_vol__
 fi
 
 if [[ ${ACTION} = "restore" ]]; then
-    docker run --rm -v ${DOCKER_VOLUME}:/__docker_vol__ -v $(pwd):/__host_dir__ busybox tar xvf /__host_dir__/${TAR_PATH} -C /
+    docker run --rm -v ${DOCKER_VOLUME}:/__docker_vol__ -v $(pwd):/__host_dir__ busybox tar zxf /__host_dir__/${TAR_PATH} -C /
 fi
 
