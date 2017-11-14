@@ -6,7 +6,7 @@ DOCKER_REPO="stable"  # choices: stable, edge, test
 ARCH="amd64"  # choices: amd64, armhf, s390x
 
 DOCKER_VERSION=""  # install latest if empty
-DOCKER_COMPOSE_VERSION="1.15.0"  # don't install if empty
+DOCKER_COMPOSE_VERSION="1.17.1"  # don't install if empty
 #DOCKER_MACHINE_VERSION="0.8.2"
 #VIRTUALBOX_VERSION="5.1.10"
 
