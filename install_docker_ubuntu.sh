@@ -35,7 +35,10 @@ sudo apt-get update
 
 echo
 echo "**************** Install docker. ****************"
-sudo apt-get install docker-ce=${DOCKER_VERSION}
+if [[ -z ${DOCKER_VERSION} ]]; then
+    sudo apt-get install docker-ce
+else
+    sudo apt-get install docker-ce=${DOCKER_VERSION}
 
 echo
 echo "**************** Enable non-root user privilege. ****************"

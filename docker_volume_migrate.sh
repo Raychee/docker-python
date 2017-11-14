@@ -40,15 +40,15 @@ fi
 TAR_PATH=$1; shift;
 
 if [[ -z ${TAR_PATH} ]]; then
-    TAR_PATH="${DOCKER_VOLUME}.tar.gz"
+    TAR_PATH="${DOCKER_VOLUME}.tar"
 fi
 
 
 if [[ ${ACTION} = "backup" ]]; then
-    docker run --rm -v ${DOCKER_VOLUME}:/__docker_vol__ -v $(pwd):/__host_dir__ busybox tar zcf /__host_dir__/${TAR_PATH} /__docker_vol__
+    docker run --rm -v ${DOCKER_VOLUME}:/__docker_vol__ -v $(pwd):/__host_dir__ busybox tar -cf /__host_dir__/${TAR_PATH} /__docker_vol__
 fi
 
 if [[ ${ACTION} = "restore" ]]; then
-    docker run --rm -v ${DOCKER_VOLUME}:/__docker_vol__ -v $(pwd):/__host_dir__ busybox tar zxf /__host_dir__/${TAR_PATH} -C /
+    docker run --rm -v ${DOCKER_VOLUME}:/__docker_vol__ -v $(pwd):/__host_dir__ busybox tar -xf /__host_dir__/${TAR_PATH} -C /
 fi
 
