@@ -50,7 +50,7 @@ if [[ -n ${DOCKER_COMPOSE_VERSION} ]]; then
     echo
     echo "**************** Install docker-compose. ****************"
     sudo curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    sudo chmod a+x /usr/local/bin/docker-compose
+    sudo chmod a+rx /usr/local/bin/docker-compose
     sudo curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 fi
 
