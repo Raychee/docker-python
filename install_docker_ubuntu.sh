@@ -5,7 +5,7 @@ set -e
 DOCKER_REPO="stable"  # choices: stable, edge, test
 ARCH="amd64"  # choices: amd64, armhf, s390x
 
-DOCEKR_VERSION=""  # install latest if empty
+DOCKER_VERSION=""  # install latest if empty
 DOCKER_COMPOSE_VERSION="1.15.0"  # don't install if empty
 #DOCKER_MACHINE_VERSION="0.8.2"
 #VIRTUALBOX_VERSION="5.1.10"
@@ -35,7 +35,7 @@ sudo apt-get update
 
 echo
 echo "**************** Install docker. ****************"
-sudo apt-get install docker-ce=${DOCEKR_VERSION}
+sudo apt-get install docker-ce=${DOCKER_VERSION}
 
 echo
 echo "**************** Enable non-root user privilege. ****************"
