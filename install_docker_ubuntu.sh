@@ -39,6 +39,7 @@ if [[ -z ${DOCKER_VERSION} ]]; then
     sudo apt-get install docker-ce
 else
     sudo apt-get install docker-ce=${DOCKER_VERSION}
+fi
 
 echo
 echo "**************** Enable non-root user privilege. ****************"
