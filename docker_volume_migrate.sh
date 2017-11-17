@@ -11,7 +11,7 @@ function change_delimiter() {
 }
 
 function exit_with_usage() {
-    echo "./${BASE_NAME} <$(change_delimiter "${ALL_ACTIONS}" " " "|")> <docker volume name> [volume data archive (.tar.gz) name]"
+    echo "./${BASE_NAME} <$(change_delimiter "${ALL_ACTIONS}" " " "|")> <docker volume name> [volume data archive (.tar) name]"
     exit $1
 }
 
